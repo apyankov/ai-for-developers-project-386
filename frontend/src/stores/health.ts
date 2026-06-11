@@ -12,12 +12,17 @@ export const useHealthStore = defineStore("health", () => {
 
   async function fetchHealth() {
     loading.value = true;
-    const result = await getHealth();
-    if (result.type === "success") {
-      health.value = result.data;
-      error.value = null;
-    } else {
-      error.value = result.error;
+    try {
+      const result = await getHealth();
+      if (result.type === "success") {
+        health.value = result.data;
+        error.value = null;
+      } else {
+        error.value = result.error;
+        health.value = null;
+      }
+    } catch {
+      error.value = "Network error";
       health.value = null;
     }
     loading.value = false;

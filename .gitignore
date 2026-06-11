@@ -19,6 +19,10 @@ dist/
 # TypeSpec
 typespec/dist/
 
+# Playwright
+test-results/
+playwright-report/
+
 # IDE
 .vscode/
 .idea/

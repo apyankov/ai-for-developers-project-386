@@ -30,5 +30,22 @@ services:
     depends_on:
       - backend
 
+  e2e:
+    profiles:
+      - e2e
+    image: mcr.microsoft.com/playwright:v1.60.0-jammy
+    working_dir: /e2e
+    volumes:
+      - ./frontend:/e2e
+      - /e2e/node_modules
+    environment:
+      - BASE_URL=http://frontend
+    depends_on:
+      - frontend
+    command:
+      - sh
+      - -c
+      - "npm ci && npx playwright test --config=tests/e2e/playwright.config.ts"
+
 volumes:
   mongo-data:
