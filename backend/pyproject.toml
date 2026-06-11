@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "calcom-backend"
+version = "0.1.0"
+description = "CalCom clone backend"
+authors = []
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115"
+pydantic = "^2.10"
+motor = "^3.7"
+uvicorn = {extras = ["standard"], version = "^0.34"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+pytest-asyncio = "^0.25"
+httpx = "^0.28"
+ruff = "^0.9"
+testcontainers = "^4.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
